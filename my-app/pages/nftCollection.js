@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Web3Modal from "web3modal";
 import { NFT_abi, NFT_CONTRACT_ADDRESS } from "../constants";
 import styles from "../styles/Home.module.css";
+import Link from 'next/link';
 
 export default function nftCollection() {
   // walletConnected keep track of whether the user's wallet is connected or not
@@ -67,7 +68,7 @@ export default function nftCollection() {
       // wait for the transaction to get mined
       await tx.wait();
       setLoading(false);
-      window.alert("You successfully minted a Crypto Dev!");
+      window.alert("You successfully minted an NFT!");
     } catch (err) {
       console.error(err);
     }
@@ -325,12 +326,15 @@ export default function nftCollection() {
       return (
         <div>
           <div className={styles.description}>
-            Presale has started!!! If your address is whitelisted, Mint a Crypto
-            Dev 🥳
+            Presale has started!!! If your address is whitelisted, Mint a NFT 🥳
           </div>
           <button className={styles.button} onClick={presaleMint}>
             Presale Mint 🚀
           </button>
+          <br /><br />
+            <Link href="/ico" className={styles.button}>
+              Go to ICO page
+            </Link>
         </div>
       );
     }
@@ -338,9 +342,15 @@ export default function nftCollection() {
     // If presale started and has ended, its time for public minting
     if (presaleStarted && presaleEnded) {
       return (
+        <div>
         <button className={styles.button} onClick={publicMint}>
           Public Mint 🚀
         </button>
+        <br /><br />
+            <Link href="/ico" className={styles.button}>
+              Go to ICO page
+            </Link>
+        </div>
       );
     }
   };
@@ -354,7 +364,7 @@ export default function nftCollection() {
       </Head>
       <div className={styles.main}>
         <div>
-          <h1 className={styles.title}>Welcome to Agrim Crypto Devs!</h1>
+          <h1 className={styles.title}>Welcome to Schrödinger's Project!</h1>
           <div className={styles.description}>
             Its an NFT collection for developers in Crypto.
           </div>
@@ -364,12 +374,12 @@ export default function nftCollection() {
           {renderButton()}
         </div>
         <div>
-          <img className={styles.image} src="./crypto-devs.jpg" />
+          <img className={styles.image} src="./crypto-devs.gif" />
         </div>
       </div>
 
       <footer className={styles.footer}>
-        Made with &#10084; by Agrim Crypto Devs
+        Made with &#10084; by Agrim and Aryan
       </footer>
     </div>
   );

@@ -4,6 +4,7 @@ import Web3Modal from "web3modal";
 import { providers, Contract } from "ethers";
 import { useEffect, useRef, useState } from "react";
 import { WHITELIST_CONTRACT_ADDRESS, Whitelist_abi } from "../constants";
+import Link from 'next/link';
 
 export default function Home() {
   // walletConnected keep track of whether the user's wallet is connected or not
@@ -153,6 +154,10 @@ export default function Home() {
         return (
           <div className={styles.description}>
             Thanks for joining the Whitelist!
+            <br /><br />
+            <Link href="/nftCollection" className={styles.button}>
+              Go to NFT Collection page
+            </Link>
           </div>
         );
       } else if (loading) {
@@ -199,7 +204,7 @@ export default function Home() {
       </Head>
       <div className={styles.main}>
         <div className={styles.con}>
-          <h1 className={styles.title}>Welcome to Agrim Crypto Devs!</h1>
+          <h1 className={styles.title}>Welcome to Schrödinger's Project!</h1>
           <div className={styles.description}>
             Its an NFT collection for developers in Crypto.
           </div>

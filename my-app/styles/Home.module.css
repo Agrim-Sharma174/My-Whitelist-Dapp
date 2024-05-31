@@ -4,7 +4,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  font-family: "Courier New", Courier, monospace;
+  font-family: "sans-serif", Courier, monospace;
 }
 
 .footer {
@@ -29,7 +29,7 @@
 .description {
   line-height: 1;
   margin: 2rem 0;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 }
 .con{
   margin-left: 50px;
@@ -40,11 +40,13 @@
   background-color: blue;
   border: none;
   color: #ffffff;
-  font-size: 15px;
+  font-size: 1.2rem;
   padding: 20px;
-  width: 200px;
+  width: 230px;
   cursor: pointer;
   margin-bottom: 2%;
+  margin-top: 2%;
+  margin-left: 2%;
 }
 @media (max-width: 1000px) {
   .main {
@@ -53,4 +55,12 @@
     justify-content: center;
     align-items: center;
   }
+}
+
+.input{
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid red;
 }

@@ -9,6 +9,7 @@ import {
   TOKEN_CONTRACT_ADDRESS,
 } from "../constants";
 import styles from "../styles/Home.module.css";
+import Link from 'next/link';
 
 export default function ico() {
   const zero = BigNumber.from(0);
@@ -135,7 +136,7 @@ export default function ico() {
       setLoading(true);
       await tx.wait();
       setLoading(false);
-      window.alert("Successfully minted Agrim Crypto Dev Tokens");
+      window.alert("Successfully minted Schrödinger's Project Tokens");
 
       await getBalanceOfASCryptoDevTokens();
       await getTotalTokensMinted();
@@ -157,7 +158,7 @@ export default function ico() {
       setLoading(true);
       await tx.wait();
       setLoading(false);
-      window.alert("Successfully claimed Agrim Crypto Dev Tokens");
+      window.alert("Successfully claimed Schrödinger's Project Tokens");
       await getBalanceOfASCryptoDevTokens();
       await getTotalTokensMinted();
       await getTokensToBeClaimed();
@@ -185,6 +186,10 @@ export default function ico() {
           <button className={styles.button} onClick={claimASCryptoDevTokens}>
             Claim Tokens
           </button>
+          <br /> <br />
+          <Link href="/DAO" className={styles.button}>
+            Go to DAO page
+          </Link>
         </div>
       );
     }
@@ -225,23 +230,23 @@ export default function ico() {
   return (
     <div>
       <Head>
-        <title>Agrim Crypto Devs</title>
+        <title>Schrödinger's Projects</title>
         <meta name="description" content="ICO-Dapp" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <div className={styles.main}>
         <div>
-          <h1 className={styles.title}>Welcome to Agrim Crypto Devs ICO!</h1>
+          <h1 className={styles.title}>Welcome to Schrödinger's Projects ICO!</h1>
           <div className={styles.description}>
-            You can claim or mint Agrim Crypto Dev tokens here
+            You can claim or mint Schrödinger's Project tokens here
           </div>
           {walletConnected ? (
             <div>
               <div className={styles.description}>
                 {/* Format Ether helps us in converting a BigNumber to string */}
                 You have minted {utils.formatEther(balanceOfASCryptoDevTokens)}{" "}
-                Agrim Crypto Dev tokens
+                Schrödinger's Project tokens
               </div>
               <div className={styles.description}>
                 {/* Format Ether helps us in converting a BigNumber to string */}
@@ -260,7 +265,7 @@ export default function ico() {
           <img className={styles.image} src="https://imgs.search.brave.com/DeTsWnfYH7PzLlOLrXSwOEQx_8yKoGTFnzfrrQkDjFg/rs:fit:860:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzAzLzE4LzYwLzYy/LzM2MF9GXzMxODYw/NjIxN19IazhqbzJN/Vm9JMzNTUU9rWXJm/T0Y5MjlKN0pnSVAw/UC5qcGc" />
         </div>
       </div>
-      <footer className={styles.footer}>Made with &#10084; by Agrim</footer>
+      <footer className={styles.footer}>Made with &#10084; by Agrim and Aryan</footer>
     </div>
   );
 }

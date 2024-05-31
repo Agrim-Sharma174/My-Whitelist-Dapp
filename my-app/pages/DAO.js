@@ -10,6 +10,7 @@ import {
   CRYPTODEVS_NFT_CONTRACT_ADDRESS,
 } from "../constants";
 import styles from "../styles/Home.module.css";
+import Link from 'next/link';
 
 export default function DAO() {
   // ETH Balance of the DAO contract
@@ -41,22 +42,22 @@ export default function DAO() {
       console.error(error);
     }
   };
-  
+
   /**
    * getOwner: gets the contract owner by connected address
    */
   const getDAOOwner = async () => {
     try {
-        const signer   = await getProviderOrSigner(true);
-        const contract = getDaoContractInstance(signer);
+      const signer = await getProviderOrSigner(true);
+      const contract = getDaoContractInstance(signer);
 
-        // call the owner function from the contract
-        const _owner  = await contract.owner();
-        // Get the address associated to signer which is connected to Metamask
-        const address = await signer.getAddress();
-        if (address.toLowerCase() === _owner.toLowerCase()) {
-          setIsOwner(true);
-        }
+      // call the owner function from the contract
+      const _owner = await contract.owner();
+      // Get the address associated to signer which is connected to Metamask
+      const address = await signer.getAddress();
+      if (address.toLowerCase() === _owner.toLowerCase()) {
+        setIsOwner(true);
+      }
     } catch (err) {
       console.error(err.message);
     }
@@ -68,7 +69,7 @@ export default function DAO() {
    */
   const withdrawDAOEther = async () => {
     try {
-      const signer   = await getProviderOrSigner(true);
+      const signer = await getProviderOrSigner(true);
       const contract = getDaoContractInstance(signer);
 
       const tx = await contract.withdrawEther();
@@ -300,7 +301,7 @@ export default function DAO() {
     } else if (nftBalance === 0) {
       return (
         <div className={styles.description}>
-          You do not own any CryptoDevs NFTs. <br />
+          You do not own any Schrödinger's Project NFTs. <br />
           <b>You cannot create or vote on proposals</b>
         </div>
       );
@@ -389,10 +390,10 @@ export default function DAO() {
 
       <div className={styles.main}>
         <div>
-          <h1 className={styles.title}>Welcome to Agrim Crypto Devs!</h1>
+          <h1 className={styles.title}>Welcome to Schrödinger's Project!</h1>
           <div className={styles.description}>Welcome to the DAO!</div>
           <div className={styles.description}>
-            Your CryptoDevs NFT Balance: {nftBalance}
+            Your Schrödinger's Project NFT Balance: {nftBalance}
             <br />
             Treasury Balance: {formatEther(treasuryBalance)} ETH
             <br />
@@ -416,22 +417,26 @@ export default function DAO() {
           {/* Display additional withdraw button if connected wallet is owner */}
           {isOwner ? (
             <div>
-            {loading ? <button className={styles.button}>Loading...</button>
-                     : <button className={styles.button} onClick={withdrawDAOEther}>
-                         Withdraw DAO ETH
-                       </button>
-            }
+              {loading ? <button className={styles.button}>Loading...</button>
+                : <button className={styles.button} onClick={withdrawDAOEther}>
+                  Withdraw DAO ETH
+                </button>
+              }
+              <br /><br />
+              <Link href="/" className={styles.button}>
+                Go back to Home Page
+              </Link>
             </div>
-            ) : ("")
+          ) : ("")
           }
         </div>
         <div>
-          <img className={styles.image} src="/cryptodevs/0.svg" />
+          <img className={styles.image} src="https://imgs.search.brave.com/DeTsWnfYH7PzLlOLrXSwOEQx_8yKoGTFnzfrrQkDjFg/rs:fit:860:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzAzLzE4LzYwLzYy/LzM2MF9GXzMxODYw/NjIxN19IazhqbzJN/Vm9JMzNTUU9rWXJm/T0Y5MjlKN0pnSVAw/UC5qcGc" />
         </div>
       </div>
 
       <footer className={styles.footer}>
-        Made with &#10084; by Agrim and Aryan Crypto Devs
+        Made with &#10084; by Agrim and Aryan
       </footer>
     </div>
   );
